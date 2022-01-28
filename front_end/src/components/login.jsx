@@ -10,10 +10,10 @@ const Login = () => {
   };
   return (
     <div>
-      <header>
+      <header class="relative flex items-center justify-center h-screen mb-12 overflow-hidden">
         <video autoPlay loop muted>
           <source src={appVideo} type="video/mp4" />
-        </video>
+       
         <img alt="images" src={Logo} width="130px" />
         <div>
           <GoogleLogin
@@ -33,6 +33,7 @@ const Login = () => {
             cookiePolicy={"single_host_origin"}
           />
         </div>
+        </video>
       </header>
     </div>
   );
