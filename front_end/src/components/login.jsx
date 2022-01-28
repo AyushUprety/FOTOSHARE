@@ -8,8 +8,9 @@ import logo from '../assets/logowhite.png';
 
 
 const Login = () => {
+ 
   const responseGoogle = (response) => {
-    console.log(response)
+   console.log(response)
   };
 
   return (
@@ -32,7 +33,7 @@ const Login = () => {
 
           <div className="shadow-2xl">
             <GoogleLogin
-              
+              clientId={process.env.REACT_APP_GOOGLE_API_TOKEN}
               render={(renderProps) => (
                 <button
                   type="button"
