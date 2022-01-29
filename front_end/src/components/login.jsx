@@ -16,7 +16,7 @@ const Login = () => {
    const doc ={
      _id:googleId,
      _type:'user',
-     user:givenName,
+     name:givenName,
      image:imageUrl
    }
    sanityClient.createIfNotExists(doc)
