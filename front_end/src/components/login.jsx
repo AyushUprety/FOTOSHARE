@@ -11,8 +11,18 @@ import sanityClient from '../sanitysetup.js'
 const Login = () => {
  
   const responseGoogle = (response) => {
-   const{givenName,imageUrl}=response.profileObj;
-   console.log(givenName);
+   const{givenName,imageUrl,googleId}=response.profileObj;
+   console.log(response)
+   const doc ={
+     _id:googleId,
+     _type:'user',
+     user:givenName,
+     image:imageUrl
+   }
+   sanityClient.createIfNotExists(doc)
+    .then(
+      console.log('Hello')  
+    )
   };
 
   return (
