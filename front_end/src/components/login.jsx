@@ -9,7 +9,7 @@ import sanityClient from '../sanitysetup.js'
 
 
 const Login = () => {
- 
+  const navigate = useNavigate();
   const responseGoogle = (response) => {
    const{givenName,imageUrl,googleId}=response.profileObj;
    console.log(response)
@@ -21,7 +21,7 @@ const Login = () => {
    }
    sanityClient.createIfNotExists(doc)
     .then(
-      console.log('Hello')  
+      navigate('/',{replace:true}) 
     )
   };
 
