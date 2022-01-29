@@ -11,7 +11,8 @@ import sanityClient from '../sanitysetup.js'
 const Login = () => {
  
   const responseGoogle = (response) => {
-   console.log(response)
+   const{givenName,imageUrl}=response.profileObj;
+   console.log(givenName);
   };
 
   return (
