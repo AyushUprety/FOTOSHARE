@@ -11,6 +11,8 @@ import sanityClient from '../sanitysetup.js'
 const Login = () => {
   const navigate = useNavigate();
   const responseGoogle = (response) => {
+    const Response = JSON.stringify(response);
+    localStorage.setItem('User',Response);
    const{givenName,imageUrl,googleId}=response.profileObj;
    console.log(response)
    const doc ={

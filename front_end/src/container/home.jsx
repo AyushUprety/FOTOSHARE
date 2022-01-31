@@ -16,7 +16,9 @@ const Home = ()=>{
         <Link to='/'>
           <img src={logo} width="130px"/>
         </Link>
-        
+        {/* <Link to={`/userProfile/:${id}`}>
+          <img src=""/>
+        </Link> */}
       </div>
     </div>
       )
