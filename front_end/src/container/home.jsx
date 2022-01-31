@@ -6,6 +6,8 @@ import logo from '../assets/logowhite.png';
 
 
 const Home = ()=>{
+    const user = localStorage.getItem('User');
+    const User = user!=='undefined'?JSON.parse(user):localStorage.clear();
     return (
     <div className='bg-red-100 flex flex-row'>
       <div className="hidden md:flex flex-row">
