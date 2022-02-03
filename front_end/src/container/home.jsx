@@ -26,6 +26,7 @@ const Home = () => {
   return (
     <div className="bg-cyan-50 flex flex-row">
       <div className="hidden md:flex flex-row">
+        <sidebar user ={user && user} closeToggle={setToggle}/>
         <h1>FOTOSHARE</h1>
       </div>
       <div className="md:hidden w-screen h-screen flex flex-row justify-between">
@@ -42,9 +43,10 @@ const Home = () => {
         </Link>
         {toggle && (
         <div className="fixed w-3/5 bg-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in">
-          {/* <div className="absolute w-full flex justify-end items-center p-2">
+          <div className="absolute w-full flex justify-end items-center p-2">
             <AiFillCloseCircle fontSize={30} className="cursor-pointer" onClick={() => setToggle(false)} />
-          </div> */}
+          </div>
+          <sidebar user ={user && user} closeToggle={setToggle}/>
         </div>
         )}
         
