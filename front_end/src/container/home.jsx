@@ -3,11 +3,15 @@ import { HiMenu } from 'react-icons/hi';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { Link, Route, Routes } from 'react-router-dom';
 import logo from '../assets/logowhite.png';
-
+import Data from '../utils/data'
+import userDetail from "../utils/data";
+import Client from '../sanitysetup';
 
 const Home = ()=>{
     const user = localStorage.getItem('User');
     const User = user!=='undefined'?JSON.parse(user):localStorage.clear();
+    const query = userDetails(User.googleId);
+
     return (
     <div className='bg-red-100 flex flex-row'>
       <div className="hidden md:flex flex-row">
@@ -19,7 +23,7 @@ const Home = ()=>{
           <img src={logo} width="130px"/>
         </Link>
         <Link to={`/userProfile/:${User.googleId}`}>
-          <img src={User.imageUrl}/>
+          <img className="inline-block h-12 w-12 rounded-full ring-2 ring-white" src={User.imageUrl} width="35px"/>
         </Link>
       </div>
     </div>
