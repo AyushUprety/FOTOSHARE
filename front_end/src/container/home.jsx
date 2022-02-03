@@ -11,7 +11,7 @@ import { useEffect } from "react";
 
 const Home = () => {
   const [person, setPerson] = useState(""); //sets the data of user who is currently logged in
-  const [toggle,setToggle] = useState(false);
+  const [toggle, setToggle] = useState(false);
   const user = localStorage.getItem("User");
   const User = user !== "undefined" ? JSON.parse(user) : localStorage.clear();
   useEffect(() => {
@@ -21,15 +21,15 @@ const Home = () => {
       setPerson(data[0]);
       console.log(person);
     });
-  },[]);
+  }, []);
 
   return (
-    <div className="bg-red-100 flex flex-row">
+    <div className="bg-cyan-50 flex flex-row">
       <div className="hidden md:flex flex-row">
         <h1>FOTOSHARE</h1>
       </div>
       <div className="md:hidden w-screen h-screen flex flex-row justify-between">
-        <HiMenu onClick={setToggle(true)}/>
+        <HiMenu onClick={()=>setToggle(true)} />
         <Link to="/">
           <img src={logo} width="130px" />
         </Link>
@@ -40,7 +40,15 @@ const Home = () => {
             width="35px"
           />
         </Link>
-        {toggle}
+        {toggle && (
+        <div className="fixed w-3/5 bg-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in">
+          {/* <div className="absolute w-full flex justify-end items-center p-2">
+            <AiFillCloseCircle fontSize={30} className="cursor-pointer" onClick={() => setToggle(false)} />
+          </div> */}
+        </div>
+        )}
+        
+        
       </div>
     </div>
   );
