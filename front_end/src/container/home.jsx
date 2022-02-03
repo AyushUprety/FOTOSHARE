@@ -11,6 +11,7 @@ import { useEffect } from "react";
 
 const Home = () => {
   const [person, setPerson] = useState(""); //sets the data of user who is currently logged in
+  const [toggle,setToggle] = useState(false);
   const user = localStorage.getItem("User");
   const User = user !== "undefined" ? JSON.parse(user) : localStorage.clear();
   useEffect(() => {
@@ -25,20 +26,21 @@ const Home = () => {
   return (
     <div className="bg-red-100 flex flex-row">
       <div className="hidden md:flex flex-row">
-        <img src={logo} width="130px" />
+        <h1>FOTOSHARE</h1>
       </div>
       <div className="md:hidden w-screen h-screen flex flex-row justify-between">
-        <HiMenu />
+        <HiMenu onClick={setToggle(true)}/>
         <Link to="/">
           <img src={logo} width="130px" />
         </Link>
-        <Link to={`/userProfile/:${User.googleId}`}>
+        <Link to={`/userProfile/:${person._id}`}>
           <img
             className="inline-block h-12 w-12 rounded-full ring-2 ring-white"
-            src={User.imageUrl}
+            src={person.image}
             width="35px"
           />
         </Link>
+        {toggle}
       </div>
     </div>
   );
