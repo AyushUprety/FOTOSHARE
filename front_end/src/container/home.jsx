@@ -9,6 +9,7 @@ import userDetail from "../utils/data";
 import Client from "../sanitysetup";
 import { useEffect } from "react";
 import Sidebar from "../container/sidebar";
+import Pin from "../container/pin";
 
 const Home = () => {
   const [person, setPerson] = useState(""); //sets the data of user who is currently logged in
@@ -57,6 +58,12 @@ const Home = () => {
           <Sidebar user={person && person} closeToggle={setToggle} />
         </div>
       )}
+      <div className="pb-2 flex-1 h-screen overflow-y-scroll">
+        <Routes>
+          <Route path="/userProfile/:userId" element={<userProfile />} />
+          <Route path="/*" element={<Pin />} />
+        </Routes>
+      </div>
     </div>
   );
 };
