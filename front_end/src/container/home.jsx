@@ -8,6 +8,7 @@ import Data from "../utils/data";
 import userDetail from "../utils/data";
 import Client from "../sanitysetup";
 import { useEffect } from "react";
+import Sidebar from "../container/sidebar";
 
 const Home = () => {
   const [person, setPerson] = useState(""); //sets the data of user who is currently logged in
@@ -15,6 +16,7 @@ const Home = () => {
   const user = localStorage.getItem("User");
   const User = user !== "undefined" ? JSON.parse(user) : localStorage.clear();
   useEffect(() => {
+    // Loop problem was solved using useEffect otherwise state was being called again and again which inturn lead to loading components frequently
     const query = userDetail(User.googleId);
     Client.fetch(query).then((data) => {
       console.log(data[0]);
@@ -24,15 +26,15 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="bg-cyan-50 flex flex-row">
+    <div className="bg-white-50 flex flex-row">
       <div className="hidden md:flex flex-row">
-        <sidebar user ={user && user} closeToggle={setToggle}/>
         <h1>FOTOSHARE</h1>
+        <Sidebar user={person && person} closeToggle={setToggle} />
       </div>
       <div className="md:hidden w-screen h-screen flex flex-row justify-between">
-        <HiMenu onClick={()=>setToggle(true)} />
+        <HiMenu onClick={() => setToggle(true)} />
         <Link to="/">
-          <img src={logo} width="130px" />
+          <h1>FOTOSHARE</h1>
         </Link>
         <Link to={`/userProfile/:${person._id}`}>
           <img
@@ -41,17 +43,20 @@ const Home = () => {
             width="35px"
           />
         </Link>
-        {toggle && (
+      </div>
+
+      {toggle && (
         <div className="fixed w-3/5 bg-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in">
           <div className="absolute w-full flex justify-end items-center p-2">
-            <AiFillCloseCircle fontSize={30} className="cursor-pointer" onClick={() => setToggle(false)} />
+            <AiFillCloseCircle
+              fontSize={30}
+              className="cursor-pointer"
+              onClick={() => setToggle(false)}
+            />
           </div>
-          <sidebar user ={user && user} closeToggle={setToggle}/>
+          <Sidebar user={person && person} closeToggle={setToggle} />
         </div>
-        )}
-        
-        
-      </div>
+      )}
     </div>
   );
 };
