@@ -7,7 +7,7 @@ import logo from "../assets/logowhite.png";
 import Data from "../utils/data";
 import userDetail from "../utils/data";
 import Client from "../sanitysetup";
-import { useEffect } from "react";
+import { useEffect,useRef } from "react";
 import Sidebar from "../container/sidebar";
 import Pin from "../container/pin";
 import UserProfile from "../components/userProfile";
@@ -28,46 +28,36 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="bg-white-50 flex md:flex-row flex-col h-screen transition-height duration-75 ease-out">
-      <div className="hidden md:flex flex-row">
-        <h1>FOTOSHARE</h1>
-        <Sidebar user={person && person} closeToggle={setToggle} />
-      </div>
-      <div className="flex md:hidden flex-row">
-        <div className="p-2 w-full flex flex-row justify-between items-center shadow-md">
-          <HiMenu onClick={() => setToggle(true)} />
-          <Link to="/">
-            <h1>FOTOSHARE</h1>
-          </Link>
-          <Link to={`/userProfile/${person._id}`}>
-            <img
-              className="inline-block h-12 w-12 rounded-full ring-2 ring-white"
-              src={person.image}
-              width="35px"
-            />
-          </Link>
-        </div>
-
-        {toggle && (
-          <div className="fixed w-3/5 bg-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in">
-            <div className="absolute w-full flex justify-end items-center p-2">
-              <AiFillCloseCircle
-                fontSize={30}
-                className="cursor-pointer"
-                onClick={() => setToggle(false)}
-              />
-            </div>
-            <Sidebar user={person && person} closeToggle={setToggle} />
-          </div>
-        )}
-      </div>
-      <div className="pb-2 flex-1 h-screen overflow-y-scroll">
-        <Routes>
-          <Route path="/userProfile/:userId" element={<UserProfile/>} />
-          <Route path="/*" element={<Pin user={person && person} />} />
-        </Routes>
-      </div>
+    <div className="flex bg-gray-50 md:flex-row flex-col h-screen transition-height duration-75 ease-out">
+    <div className="hidden md:flex h-screen flex-initial">
+      <Sidebar user={person && person} />
     </div>
-  );
+    <div className="flex md:hidden flex-row">
+      <div className="p-2 w-full flex flex-row justify-between items-center shadow-md">
+        <HiMenu fontSize={40} className="cursor-pointer" onClick={() => setToggle(true)} />
+        <Link to="/">
+          <img src={logo} alt="logo" className="w-28" />
+        </Link>
+        <Link to={`userProfile/${person._id}`}>
+          <img src={person.image} alt="user-pic" className="w-9 h-9 rounded-full " />
+        </Link>
+      </div>
+      {toggle && (
+      <div className="fixed w-4/5 bg-white h-screen overflow-y-auto shadow-md z-10 animate-slide-in">
+        <div className="absolute w-full flex justify-end items-center p-2">
+          <AiFillCloseCircle fontSize={30} className="cursor-pointer" onClick={() => setToggle(false)} />
+        </div>
+        <Sidebar closeToggle={setToggle} user={person && person} />
+      </div>
+      )}
+    </div>
+    <div className="pb-2 flex-1 h-screen overflow-y-scroll" >
+      <Routes>
+        <Route path="/user-profile/:userId" element={<UserProfile />} />
+        <Route path="/*" element={<Pin user={person && person} />} />
+      </Routes>
+    </div>
+  </div>
+);
 };
 export default Home;
