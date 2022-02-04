@@ -31,7 +31,7 @@ const Home = () => {
         <h1>FOTOSHARE</h1>
         <Sidebar user={person && person} closeToggle={setToggle} />
       </div>
-      <div className="md:hidden w-screen h-screen flex flex-row justify-between">
+      <div className="md:hidden w-screen flex flex-row justify-between shadow-lg shadow-indigo-300">
         <HiMenu onClick={() => setToggle(true)} />
         <Link to="/">
           <h1>FOTOSHARE</h1>
