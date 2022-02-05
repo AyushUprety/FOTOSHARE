@@ -3,7 +3,9 @@ import { Link, NavLink } from "react-router-dom";
 import { RiHomeFill } from "react-icons/ri";
 
 export const sidebar = (props) => {
-  const{user}=props;
+  const Active = "text-indigo-700 hover:text-gray-600 ";
+  const notActive = "text-gray-500 hover:text-cyan-500";
+  const { user } = props;
   const Categories = [
     "Cats",
     "Dogs",
@@ -27,8 +29,12 @@ export const sidebar = (props) => {
       <p>Discover Categories</p>
       {Categories.map((item) => {
         return (
-          <NavLink to="/category/categoryType">
-            <div>{item}</div>
+          <NavLink
+            key={item.name}
+            className={({ isActive }) => (isActive ? Active : notActive)}
+            to={`/category/${item}`}
+          >
+            {item}
           </NavLink>
         );
       })}
