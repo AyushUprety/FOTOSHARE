@@ -25,8 +25,8 @@ export const sidebar = (props) => {
         <p className="pl-3">Home</p>
       </Link>
 
-      <p>Discover Categories</p>
-
+      <p className="pb-3">Discover Categories</p>
+      <div className="flex flex-col gap-y-5">
       {Categories.map((item) => {
         return (
           <NavLink
@@ -41,6 +41,9 @@ export const sidebar = (props) => {
       <Link to={`/userProfile/${user._id}`}>
         <img className="rounded-full w-10 h-10" src={user.image} />
       </Link>
+      </div>
+      
+      
     </div>
   );
 };
