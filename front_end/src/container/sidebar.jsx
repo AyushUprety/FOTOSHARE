@@ -38,6 +38,7 @@ export const Sidebar = (props) => {
             onClick={()=>setToggle(true)}
           >
             {item}
+            {console.log(item)}
           </NavLink>
         );
       })}
