@@ -7,7 +7,7 @@ export const Sidebar = (props) => {
   const Active = "text-indigo-700 hover:text-gray-600 ";
   const notActive = "text-gray-500 hover:text-cyan-500";
   const { user } = props;
-  const [clicked,setClicked]=useState(false);
+  const {setToggle}=props;
   const Categories = [
     "Cats",
     "Dogs",
@@ -35,6 +35,7 @@ export const Sidebar = (props) => {
             key={item.name}
             className={({ isActive }) => (isActive ? Active : notActive)}
             to={`/category/${item}`}
+            onClick={()=>setToggle(true)}
           >
             {item}
           </NavLink>
