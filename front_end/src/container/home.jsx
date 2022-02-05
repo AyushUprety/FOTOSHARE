@@ -53,7 +53,7 @@ const Home = () => {
     </div>
     <div className="pb-2 flex-1 h-screen overflow-y-scroll" >
       <Routes>
-        <Route path="/user-profile/:userId" element={<UserProfile />} />
+        <Route path="/userProfile/:userId" element={<UserProfile />} />
         <Route path="/*" element={<Pin user={person && person} />} />
       </Routes>
     </div>
