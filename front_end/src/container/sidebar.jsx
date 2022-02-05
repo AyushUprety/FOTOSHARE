@@ -18,15 +18,15 @@ export const sidebar = (props) => {
     "Quotes",
   ];
   return (
-    <div className="flex flex-col p-4">
+    <div className="flex flex-col p-4 h-screen">
       <h1>FotoShare</h1>
-      <div className="flex flex-row p-2">
-        <Link to="/">
-          <RiHomeFill />
-          <p>Home</p>
-        </Link>
-      </div>
+      <Link className="flex flex-row py-2 items-center" to="/">
+        <RiHomeFill/>
+        <p className="pl-3">Home</p>
+      </Link>
+
       <p>Discover Categories</p>
+
       {Categories.map((item) => {
         return (
           <NavLink
@@ -38,6 +38,9 @@ export const sidebar = (props) => {
           </NavLink>
         );
       })}
+      <Link to={`/userProfile/${user._id}`}>
+        <img className="rounded-full w-10 h-10" src={user.image} />
+      </Link>
     </div>
   );
 };
