@@ -1,11 +1,13 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { RiHomeFill } from "react-icons/ri";
+import {useState} from 'react'
 
-export const sidebar = (props) => {
+export const Sidebar = (props) => {
   const Active = "text-indigo-700 hover:text-gray-600 ";
   const notActive = "text-gray-500 hover:text-cyan-500";
   const { user } = props;
+  const [clicked,setClicked]=useState(false);
   const Categories = [
     "Cats",
     "Dogs",
@@ -47,4 +49,4 @@ export const sidebar = (props) => {
     </div>
   );
 };
-export default sidebar;
+export default Sidebar;
