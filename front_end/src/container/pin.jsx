@@ -2,10 +2,11 @@ import React from 'react';
 import Navbar from '../components/navbar'
 import Search from '../components/search'
 
- const pin = () => {
+ const pin = (props) => {
+  const {user}=props;
   return (
     <div>
-      <Navbar/>
+      <Navbar user={user}/>
       <Search/>
     </div>
   )
