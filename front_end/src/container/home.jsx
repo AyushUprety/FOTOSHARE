@@ -36,7 +36,7 @@ const Home = () => {
       <div className="p-2 w-full flex flex-row justify-between items-center shadow-md">
         <HiMenu fontSize={40} className="cursor-pointer" onClick={() => setToggle(true)} />
         <Link to="/">
-          <img src={logo} alt="logo" className="w-28" />
+          <h1 className="w-28">FOTOSHARE</h1>
         </Link>
         <Link to={`userProfile/${person._id}`}>
           <img src={person.image} alt="user-pic" className="w-9 h-9 rounded-full " />
