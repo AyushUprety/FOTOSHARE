@@ -1,4 +1,5 @@
 import React from 'react';
+import Feed from '../components/feed';
 import Navbar from '../components/navbar'
 import Search from '../components/search'
 
@@ -8,6 +9,7 @@ import Search from '../components/search'
     <div>
       <Navbar user={user}/>
       <Search/>
+      <Feed/>
     </div>
   )
 };

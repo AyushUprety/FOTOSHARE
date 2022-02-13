@@ -5,11 +5,11 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { Link, Route, Routes } from "react-router-dom";
 import logo from "../assets/logowhite.png";
 import Data from "../utils/data";
-import userDetail from "../utils/data";
+import {userDetail} from "../utils/data";
 import Client from "../sanitysetup";
 import { useEffect,useRef } from "react";
 import Sidebar from "../container/sidebar";
-import Pin from "../container/pin";
+import Pins from "../container/pins";
 import UserProfile from "../components/userProfile";
 
 const Home = () => {
@@ -21,9 +21,7 @@ const Home = () => {
     // Loop problem was solved using useEffect otherwise state was being called again and again which inturn lead to loading components frequently
     const query = userDetail(User.googleId);
     Client.fetch(query).then((data) => {
-      console.log(data[0]);
       setPerson(data[0]);
-      console.log(person);
     });
   }, []);
 
@@ -54,10 +52,11 @@ const Home = () => {
     <div className="pb-2 flex-1 h-screen overflow-y-scroll" >
       <Routes>
         <Route path="/userProfile/:userId" element={<UserProfile />} />
-        <Route path="/*" element={<Pin user={person && person} />} />
+        <Route path="/*" element={<Pins user={person && person} />} />
       </Routes>
     </div>
   </div>
 );
 };
 export default Home;
+ 

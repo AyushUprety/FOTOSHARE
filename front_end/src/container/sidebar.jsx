@@ -1,7 +1,8 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { RiHomeFill } from "react-icons/ri";
-import {useState} from 'react'
+import {useState} from 'react';
+import { Navigate } from "react-router-dom";
 
 export const Sidebar = (props) => {
   const Active = "text-indigo-700 hover:text-gray-600 ";
@@ -36,6 +37,7 @@ export const Sidebar = (props) => {
             className={({ isActive }) => (isActive ? Active : notActive)}
             to={`/category/${item}`}
             onClick={()=>setToggle(true)}
+            Navigate=''
           >
             {item}
             {console.log(item)}
