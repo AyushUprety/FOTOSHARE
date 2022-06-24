@@ -1,11 +1,11 @@
 import { RiOrderPlayFill } from "react-icons/ri";
 
- export const userDetail=(ownerId)=>{
-    const query = `*[_type == "user" && _id=='${ownerId}']`
-    return query;
-}
- export const allPin =()=>{
-    const query = `*[_type=="pin"]{
+export const userDetail = (ownerId) => {
+  const query = `*[_type == "user" && _id=='${ownerId}']`;
+  return query;
+};
+export const allPin = () => {
+  const query = `*[_type=="pin"]{
         name,
         about,
         destination,
@@ -13,11 +13,11 @@ import { RiOrderPlayFill } from "react-icons/ri";
         image,
         postedBy,
         save
-    }`
-    return query;
-}
-export const selectedPin = (category)=>{
-    const query=`*[_type=='pin' && titlematch='${category}'|| categorymatch='${category}'|| aboutmatch='${category}' |order(_createdAt desc)]{
+    }`;
+  return query;
+};
+export const selectedPin = (category) => {
+  const query = `*[_type=='pin' && titlematch='${category}'|| categorymatch='${category}'|| aboutmatch='${category}' |order(_createdAt desc)]{
         title,
         about,
         destination,
@@ -25,6 +25,21 @@ export const selectedPin = (category)=>{
             asset->{
                 url
             }
-        }
-    }`
-}
+        },
+        category,
+        postedBy->{
+            _id,
+            userName,
+            image
+        },
+        save[]{
+            _key,
+            postedBy->{
+                _id,
+                userName,
+                image
+            },
+
+        },
+    }`;
+};
