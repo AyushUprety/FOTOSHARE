@@ -1,11 +1,7 @@
 import React from 'react'
 
- const Pin = (props) => {
-   console.log(props)
+export const pin = () => {
   return (
-    <div>
-      <img src={props.PinList.destination}/>
-    </div>
+    <div>pin</div>
   )
 }
-export default Pin;
