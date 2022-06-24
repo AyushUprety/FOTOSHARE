@@ -29,6 +29,11 @@ const Feed = () => {
       }
       else{
         Client.fetch(feedQuery)
+        .then(
+            ()=>{
+                setPin(data)
+            }
+        )
       }
      
     },
