@@ -3,7 +3,7 @@ import {TailSpin} from "react-loader-spinner";
 
 const Spinner = (props) => {
   return (
-    <div className="loader">
+    <div className="loader flex flex-col justify-center items-center w-full h-full">
             <TailSpin
                 type="Circles"
                 color="#dc1c2c"
@@ -11,6 +11,8 @@ const Spinner = (props) => {
                 width={100}
                 //timeout={1000} //3 secs
             />
+        <p>{props.message}</p>
+         
     </div>
   );
 };

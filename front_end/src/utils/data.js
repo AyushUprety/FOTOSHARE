@@ -1,3 +1,5 @@
+import { RiOrderPlayFill } from "react-icons/ri";
+
  export const userDetail=(ownerId)=>{
     const query = `*[_type == "user" && _id=='${ownerId}']`
     return query;
@@ -13,4 +15,16 @@
         save
     }`
     return query;
+}
+export const selectedPin = (category)=>{
+    const query=`*[_type=='pin' && titlematch='${category}'|| categorymatch='${category}'|| aboutmatch='${category}' |order(_createdAt desc)]{
+        title,
+        about,
+        destination,
+        image{
+            asset->{
+                url
+            }
+        }
+    }`
 }
