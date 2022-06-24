@@ -1,7 +1,8 @@
 import React from 'react'
 
-export const pin = () => {
+ const pin = () => {
   return (
     <div>pin</div>
   )
 }
+export default pin;

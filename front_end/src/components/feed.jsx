@@ -6,27 +6,35 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Spinner from "./spinner";
 import Client from "../sanitysetup";
-import Data from "../utils/data";
-import { selectedPin } from "../utils/data";
+import { feedQuery } from "../utils/data";
+import { pinDetailQuery } from "../utils/data";
 import Pin from './pin'
 
 const Feed = () => {
   const [loader, setLoader] = useState(false);
   const [pin, setPin] = useState("");
-  if (loader) return <Spinner message="Items are currently being loaded" />;
-  const { categoryid } = useParams();
+  
+  const categoryId = useParams();
+  console.log(categoryId)
 
   useEffect(
-    (category) => {
+    () => {
       setLoader(true);
-      const query = selectedPin(category);
-      Client.fetch(query).then((data) => {
-        setPin(data);
-        setLoader(false);
-      });
+      if(categoryId){
+        const query = pinDetailQuery(categoryId);
+        Client.fetch(query).then((data) => {
+          setPin(data);
+          setLoader(false);
+        });
+      }
+      else{
+        Client.fetch(feedQuery)
+      }
+     
     },
-    [category]
+    [categoryId]
   );
+  if (loader) return <Spinner message="Items are currently being loaded" />;
 
   return (
     <div>
