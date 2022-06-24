@@ -3,7 +3,7 @@ import Feed from '../components/feed';
 import Navbar from '../components/navbar'
 import Search from '../components/search'
 
- const pin = (props) => {
+ const Pins = (props) => {
   const {user}=props;
   return (
     <div>
@@ -13,4 +13,4 @@ import Search from '../components/search'
     </div>
   )
 };
-export default pin;
+export default Pins;

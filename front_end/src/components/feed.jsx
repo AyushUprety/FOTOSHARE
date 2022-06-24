@@ -2,27 +2,13 @@
 passed outside of jsx which was cleared after talking to Santosh*/
 
 import React from "react";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import { useParams } from "react-router-dom";
-import { allPin } from "../utils/data";
-import Client from "../sanitysetup";
-import Pin from "./pin";
+import Spinner from './spinner'
+
 
 const Feed = () => {
-  const query = allPin();
-  const pinArray = [];
-  Client.fetch(query)
-    .then((pins) =>
-      pins.map((pin) => {
-        pinArray.push(pin);
-      })
-    )
-    .catch((e) => {
-      console.log("unable to fetch data");
-    });
-    console.log(pinArray);
-  return <div>
-    <Pin pinList={pinArray}/>
-  </div>;
+  const[loader,setLoader]=useState(true);
+  if(loader) return <Spinner message='Items are currently being loaded'/>
 };
 export default Feed;
